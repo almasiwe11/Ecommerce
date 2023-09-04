@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-flex {
+  @apply flex flex-col md:flex-row;
+}
+
+.show {
+  @apply border-2 border-red-600;
+}
+
+.show-bg {
+  @apply bg-cyan-500;
+}
