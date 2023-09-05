@@ -1,8 +1,9 @@
 import Hero from "./Components/Hero/Hero"
+import { ProductsProvider } from "./Context/ProductsContext"
 
 function App() {
   return (
-    <div className="text-blue-400 text-4xl font-bold">
+    <div className="">
       <Hero />
     </div>
   )
