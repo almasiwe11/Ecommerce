@@ -4,15 +4,18 @@ import Logo from "../Svgs/Logo"
 import NavMenu from "../NavMenu"
 import Cart from "../Svgs/Cart"
 import { useLocation } from "react-router"
+import { useParams } from "react-router"
 function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const pages: string[] = ["home", "headphones", "speakers", "earphones"]
   const location = useLocation()
   const isHomePage = location.pathname === "/"
+  const { product } = useParams()
+  console.log(product)
   return (
     <div
-      className={`z-40 border-b border-grayish lg:border-0 ${
-        !isHomePage && "bg-black"
+      className={`z-40 lg:border-0 ${!isHomePage && "bg-black"} ${
+        !product && "border-b border-grayish "
       }`}
     >
       <section className={`wrapper  `}>
@@ -36,7 +39,7 @@ function Header(): JSX.Element {
             <Cart style={"group-hover:fill-orange duration-300 ease-in-out "} />
           </div>
         </div>
-        <div className=" lg:border border-grayish   "></div>
+        <div className={`${!product && "border-grayish lg:border "}`}></div>
       </section>
     </div>
   )

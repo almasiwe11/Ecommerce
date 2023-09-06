@@ -9,7 +9,7 @@ import RespImage from "../RespImage"
 
 function ByOne() {
   return (
-    <section className="wrapper flex flex-col gap-10">
+    <section className="wrapper flex flex-col gap-10  mt-32">
       <div className="bg-orange flex flex-col gap-12 lg:grid lg:grid-cols-2 px-4 md:px-10 pb-12 pt-16 lg:py-36 relative overflow-hidden rounded-xl ">
         <div className="  w-1/2 mx-auto max-w-[14rem] lg:mx-0 lg:absolute lg:-bottom-3 lg:left-24 lg:max-w-[25rem] z-10">
           <RespImage
