@@ -1,11 +1,14 @@
 import { useProducts } from "../../Context/ProductsContext"
-import Headphone from "./Headphone"
-function Headphones() {
+import ProductCategory from "./ProductCategory"
+import { useParams } from "react-router"
+
+function Category() {
   const { products } = useProducts()
-  const headphones = products.filter(
-    (product) => product.category === "headphones"
+  const { category } = useParams()
+  const thisCategory = products.filter(
+    (product) => product.category === category
   )
-  console.log(headphones)
+
   return (
     <section>
       <div className="bg-black h-[30vh]  md:h-[40vh] flex-center">
@@ -14,9 +17,9 @@ function Headphones() {
         </h1>
       </div>
       <div className="flex flex-col lg:gap-16 mt-12 pb-16">
-        {headphones.map((headphone, i) => (
-          <div key={headphone.id}>
-            <Headphone headphone={headphone} index={i} />
+        {thisCategory.map((product, i) => (
+          <div key={product.id}>
+            <ProductCategory product={product} index={i} />
           </div>
         ))}
       </div>
@@ -24,4 +27,4 @@ function Headphones() {
   )
 }
 
-export default Headphones
+export default Category
