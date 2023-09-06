@@ -1,5 +1,6 @@
 import Layout from "./Layouts/Layout"
 import Home from "./Pages/Home"
+import Headphones from "./Pages/Headphones/Headphones"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { ProductsProvider } from "./Context/ProductsContext"
 
