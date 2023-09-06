@@ -13,8 +13,8 @@ function Category() {
 
   return (
     <section>
-      <div className="bg-black h-[30vh]  md:h-[40vh] flex-center">
-        <h1 className="text-4xl text-white uppercase tracking-wider pt-16">
+      <div className="bg-black h-[24vh]  md:h-[33 vh] flex-center">
+        <h1 className="text-4xl text-white uppercase tracking-wider ">
           headphones
         </h1>
       </div>

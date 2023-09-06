@@ -10,7 +10,11 @@ function Header(): JSX.Element {
   const location = useLocation()
   const isHomePage = location.pathname === "/"
   return (
-    <div className={`z-40 border-b border-grayish lg:border-0`}>
+    <div
+      className={`z-40 border-b border-grayish lg:border-0 ${
+        !isHomePage && "bg-black"
+      }`}
+    >
       <section className={`wrapper  `}>
         <div className="flex items-center   py-8 md:py-10">
           <div className="flex w-full justify-between md:justify-normal">

@@ -1,8 +1,8 @@
 /* import Button from "../Button" */
 function Hero(): JSX.Element {
   return (
-    <div className="h-screen -z-10 ">
-      <div className="absolute -z-10  inset-0 font-manrope bg-hero-mobile md:bg-hero-tablet lg:bg-hero-desktop md:h-screen h-[40rem] w-screen bg-contain bg-fill md:bg-cover bg-center bg-no-repeat ">
+    <div className="h-[31rem] md:h-screen -z-10  ">
+      <div className="absolute -z-10 top-0  md:inset-0 font-manrope bg-hero-mobile md:bg-hero-tablet lg:bg-hero-desktop h-[35rem] md:h-screen  w-screen bg-contain bg-fill md:bg-cover bg-center bg-no-repeat ">
         <div className="flex flex-col items-center wrapper text-center lg:text-left lg:items-start text-white  pt-28 md:pt-56 px-6 lg:px-0   ">
           <p className="uppercase tracking-[8px]  text-xl text-grayish ">
             new product
