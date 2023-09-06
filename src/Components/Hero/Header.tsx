@@ -3,13 +3,15 @@ import Hamburger from "./Hamburger"
 import Logo from "../Svgs/Logo"
 import NavMenu from "../NavMenu"
 import Cart from "../Svgs/Cart"
+import { useLocation } from "react-router"
 function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const pages: string[] = ["home", "headphones", "speakers", "earphones"]
-
+  const location = useLocation()
+  const isHomePage = location.pathname === "/"
   return (
-    <div className="wrapper ">
-      <section className="wrapper  absolute">
+    <div className={`${isHomePage ? "wrapper" : "bg-black"}`}>
+      <section className={`wrapper  ${isHomePage && "absolute"}`}>
         <div className="flex items-center   py-8 md:py-10">
           <div className="flex w-full justify-between md:justify-normal">
             <Hamburger

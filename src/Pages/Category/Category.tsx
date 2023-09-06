@@ -9,6 +9,8 @@ function Category() {
     (product) => product.category === category
   )
 
+  thisCategory.sort((a, b) => (a.new === b.new ? 0 : a ? -1 : 1))
+
   return (
     <section>
       <div className="bg-black h-[30vh]  md:h-[40vh] flex-center">

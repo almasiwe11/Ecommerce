@@ -51,7 +51,7 @@ function ByOne() {
           desktop={ear}
           alt={"Speaker Image"}
           tablet={eartb}
-          style="mx-auto h-full rounded-xl "
+          style="mx-auto h-full w-full rounded-xl "
         ></RespImage>
         <div className="bg-white-gray px-6 py-14 flex flex-col gap-8 items-start rounded-xl lg:px-14 lg:py-24">
           <h1 className="uppercase font-bold text-4xl tracking-wider">

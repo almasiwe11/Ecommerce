@@ -1,4 +1,4 @@
-import Button from "../../Components/Button"
+import ButtonLink from "../../Components/ButtonLink"
 import RespImage from "../../Components/RespImage"
 import { ProductType } from "../../Modules/TypesContext"
 function ProductCategory({
@@ -31,7 +31,7 @@ function ProductCategory({
 
         <h1 className="font-big">{product.name}</h1>
         <p className="text-grayish">{product.description}</p>
-        <Button orange={true} />
+        <ButtonLink orange={true} sendHere={product.slug} />
       </div>
     </div>
   )

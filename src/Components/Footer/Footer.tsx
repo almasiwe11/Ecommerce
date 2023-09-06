@@ -19,7 +19,7 @@ function Footer() {
           />
         </div>
 
-        <p className="text-grayish md:mb-16 lg:mb-1    lg:max-w-lg">
+        <p className="text-grayish md:mb-16 lg:mb-1  lg:max-w-lg">
           Audiophile is an all in one stop to fulfill your audio needs. We're a
           small team of music lovers and sound specialists who are devoted to
           helping you get the most out of personal audio. Come and visit our
