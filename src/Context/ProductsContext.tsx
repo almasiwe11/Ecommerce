@@ -5,12 +5,13 @@ import {
   useEffect,
   ReactNode,
 } from "react"
-import ProductsContextType from "../Modules/TypesContext"
+import { ProductsContextType, ProductType } from "../Modules/TypesContext"
 
-const ProductsContext = createContext<ProductsContextType[] | null>(null)
+const ProductsContext = createContext<ProductsContextType | null>(null)
 
 function ProductsProvider({ children }: { children: ReactNode }) {
-  const [products, setProducts] = useState<ProductsContextType[]>([])
+  const [products, setProducts] = useState<ProductType[]>([])
+  const [categoryList, setCategoryList] = useState<string[]>([])
 
   useEffect(() => {
     async function getProducts() {
@@ -19,9 +20,11 @@ function ProductsProvider({ children }: { children: ReactNode }) {
         if (!res.ok) {
           throw new Error("Failed to fetch data")
         }
-        const data = await res.json()
+        const data: ProductType[] = await res.json()
 
         setProducts(data)
+        const categories = new Set(data.map((product) => product.category))
+        setCategoryList([...categories])
       } catch (e) {
         console.error("Error fetching data:", e)
       }
@@ -31,7 +34,7 @@ function ProductsProvider({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <ProductsContext.Provider value={products}>
+    <ProductsContext.Provider value={{ products, categoryList }}>
       {children}
     </ProductsContext.Provider>
   )

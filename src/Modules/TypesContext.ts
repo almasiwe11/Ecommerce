@@ -1,48 +1,57 @@
-type ProductsContextType = {
-  id?: number
-  slug?: string
-  name?: string
-  image?: {
-    mobile?: string
-    tablet?: string
-    desktop?: string
+type ProductType = {
+  id: number
+  slug: string
+  name: string
+  image: {
+    mobile: string
+    tablet: string
+    desktop: string
   }
-  category?: string
-  categoryImage?: {
-    mobile?: string
-    tablet?: string
-    desktop?: string
+  category: string
+  categoryImage: {
+    mobile: string
+    tablet: string
+    desktop: string
   }
-  new?: boolean
-  price?: number
-  description?: string
-  features?: string
-  includes?: {
-    quantity?: number
-    item?: string
+  new: boolean
+  price: number
+  description: string
+  features: string
+  includes: {
+    quantity: number
+    item: string
   }[]
-  gallery?: {
-    first?: {
-      mmobile?: string
-      tablet?: string
-      desktop?: string
+  gallery: {
+    first: {
+      mobile: string
+      tablet: string
+      desktop: string
     }
-    second?: {
-      mobile?: string
-      tablet?: string
-      desktop?: string
+    second: {
+      mobile: string
+      tablet: string
+      desktop: string
     }
-    third?: {
-      mobile?: string
-      tablet?: string
-      desktop?: string
+    third: {
+      mobile: string
+      tablet: string
+      desktop: string
     }
   }
-  others?: {
-    slug?: string
-    name?: string
-    image?: { mobile?: string; tablet?: string; desktop?: string }[]
+  others: {
+    slug: string
+    name: string
+    image: {
+      mobile: string
+      tablet: string
+      desktop: string
+    }
   }[]
 }
 
-export default ProductsContextType
+type ProductsContextType = {
+  products: ProductType[]
+  categoryList: string[]
+}
+
+export type { ProductsContextType, ProductType }

@@ -6,7 +6,7 @@ function Hero(): JSX.Element {
       <Header />
       <div className="border-b border-grayish lg:wrapper"></div>
 
-      <div className="flex flex-col items-center wrapper text-center lg:text-left lg:items-start text-white  mt-28 md:mt-40 px-6   ">
+      <div className="flex flex-col items-center wrapper text-center lg:text-left lg:items-start text-white  mt-28 md:mt-56 px-6   ">
         <p className="uppercase tracking-[8px]  text-xl text-grayish ">
           new product
         </p>
@@ -19,7 +19,7 @@ function Hero(): JSX.Element {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <button className="bg-orange py-3 px-6 uppercase mt-6 md:mt-10 tracking-wider ">
+        <button className="bg-orange border border-orange py-3 px-6 uppercase mt-6 md:mt-10 tracking-wider duration-300 ease-in-out hover:bg-transparent ">
           See Product
         </button>
       </div>
