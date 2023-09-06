@@ -10,8 +10,8 @@ function Header(): JSX.Element {
   const location = useLocation()
   const isHomePage = location.pathname === "/"
   return (
-    <div className={`${isHomePage ? "wrapper" : "bg-black"}`}>
-      <section className={`wrapper  ${isHomePage && "absolute"}`}>
+    <div className={`z-40 border-b border-grayish lg:border-0`}>
+      <section className={`wrapper  `}>
         <div className="flex items-center   py-8 md:py-10">
           <div className="flex w-full justify-between md:justify-normal">
             <Hamburger
@@ -32,7 +32,7 @@ function Header(): JSX.Element {
             <Cart style={"group-hover:fill-orange duration-300 ease-in-out "} />
           </div>
         </div>
-        <div className=" border border-grayish absolute -left-[5.5%] w-[100vw] lg:left-0 lg:w-full "></div>
+        <div className=" lg:border border-grayish   "></div>
       </section>
     </div>
   )
