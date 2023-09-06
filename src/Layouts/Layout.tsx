@@ -5,13 +5,13 @@ import Bring from "../Components/Bring/Bring"
 import Footer from "../Components/Footer/Footer"
 function Layout() {
   return (
-    <div>
+    <>
       <Header />
       <Outlet />
       <AllProducts />
       <Bring />
       <Footer />
-    </div>
+    </>
   )
 }
 

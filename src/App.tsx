@@ -1,9 +1,5 @@
-import AllProducts from "./Components/AllProducts/AllProducts"
-import ByOne from "./Components/ByOne/ByOne"
-import Hero from "./Components/Hero/Hero"
-import Bring from "./Components/Bring/Bring"
-import Footer from "./Components/Footer/Footer"
 import Layout from "./Layouts/Layout"
+import Home from "./Pages/Home"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import { ProductsProvider } from "./Context/ProductsContext"
 
@@ -13,13 +9,9 @@ function App() {
       <ProductsProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Layout />}></Route>
-
-            <Hero />
-            <ByOne />
-            <AllProducts />
-            <Bring />
-            <Footer />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </ProductsProvider>

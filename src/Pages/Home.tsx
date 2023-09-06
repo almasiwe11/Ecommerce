@@ -1,5 +1,13 @@
+import ByOne from "../Components/ByOne/ByOne"
+import Hero from "../Components/Hero/Hero"
+
 function Home() {
-  return <div>Home</div>
+  return (
+    <>
+      <Hero />
+      <ByOne />
+    </>
+  )
 }
 
 export default Home
