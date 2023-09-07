@@ -8,8 +8,8 @@ type PropTypes = {
 function ProductGallery({ thisProduct }: PropTypes) {
   const { first, second, third } = thisProduct.gallery
   return (
-    <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-5 lg:gap-8 mt-16">
-      <div className="flex flex-col gap-8">
+    <div className="flex   flex-col md:flex-row gap-6 mt-16">
+      <div className="flex flex-col gap-6 flex-grow ">
         <RespImage
           desktop={first.desktop}
           tablet={first.tablet}
@@ -25,13 +25,15 @@ function ProductGallery({ thisProduct }: PropTypes) {
           style="rounded-xl w-full"
         />
       </div>
-      <RespImage
-        desktop={third.desktop}
-        tablet={third.tablet}
-        mobile={third.mobile}
-        alt={`${thisProduct.name} image`}
-        style="rounded-xl h-full w-full"
-      />
+      <div className="flex-grow">
+        <RespImage
+          desktop={third.desktop}
+          tablet={third.tablet}
+          mobile={third.mobile}
+          alt={`${thisProduct.name} image`}
+          style="rounded-xl h-full w-full  "
+        />
+      </div>
     </div>
   )
 }
