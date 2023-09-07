@@ -5,13 +5,20 @@ import {
   useEffect,
   ReactNode,
 } from "react"
-import { ProductsContextType, ProductType } from "../Modules/TypesContext"
+import {
+  ProductsContextType,
+  ProductType,
+  inCartType,
+} from "../Modules/TypesContext"
 
 const ProductsContext = createContext<ProductsContextType | null>(null)
 
 function ProductsProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<ProductType[]>([])
   const [categoryList, setCategoryList] = useState<string[]>([])
+  const [inCartProducts, setInCartProducts] = useState<inCartType[]>([])
+
+  console.log(inCartProducts)
 
   useEffect(() => {
     async function getProducts() {
@@ -34,7 +41,9 @@ function ProductsProvider({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <ProductsContext.Provider value={{ products, categoryList }}>
+    <ProductsContext.Provider
+      value={{ products, categoryList, inCartProducts, setInCartProducts }}
+    >
       {children}
     </ProductsContext.Provider>
   )

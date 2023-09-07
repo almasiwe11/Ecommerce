@@ -1,7 +1,7 @@
 import RespImage from "../../Components/RespImage"
 import AmountInput from "./AmountInput"
-import ButtonLink from "../../Components/ButtonLink"
 import { ProductType } from "../../Modules/TypesContext"
+import ButtonAddCart from "../../Components/ButtonAddCart"
 
 type PropTypes = {
   amount: number
@@ -30,9 +30,7 @@ function Product({ thisProduct, amount, setAmount }: PropTypes) {
 
         <div className="flex  items-center gap-5">
           <AmountInput amount={amount} setAmount={setAmount} />
-          <ButtonLink orange={true} addCart={true}>
-            Add to cart
-          </ButtonLink>
+          <ButtonAddCart amount={amount} thisProduct={thisProduct} />
         </div>
       </div>
     </div>

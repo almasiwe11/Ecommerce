@@ -7,20 +7,13 @@ type Proptypes = {
   orange?: boolean
   style?: string
   product?: ProductType
-  addCart?: boolean
 }
 
-function ButtonLink({
-  children,
-  orange = false,
-  style,
-  product,
-  addCart = false,
-}: Proptypes) {
+function ButtonLink({ children, orange = false, style, product }: Proptypes) {
   const { category, slug } = product || {}
   return (
     <>
-      {addCart ? (
+      <Link to={`/${category}/${slug}`}>
         <button
           className={`${
             orange &&
@@ -29,18 +22,7 @@ function ButtonLink({
         >
           {children ? children : "See Product"}
         </button>
-      ) : (
-        <Link to={`/${category}/${slug}`}>
-          <button
-            className={`${
-              orange &&
-              "hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "
-            } ${style} py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
-          >
-            {children ? children : "See Product"}
-          </button>
-        </Link>
-      )}
+      </Link>
     </>
   )
 }

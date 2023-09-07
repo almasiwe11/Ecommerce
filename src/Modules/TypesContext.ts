@@ -1,5 +1,6 @@
 type ProductType = {
   id: number
+  cart: string
   slug: string
   name: string
   image: {
@@ -49,9 +50,18 @@ type ProductType = {
   }[]
 }
 
+type inCartType = {
+  name: string
+  image: string
+  price: number
+  amount: number
+}
+
 type ProductsContextType = {
   products: ProductType[]
   categoryList: string[]
+  inCartProducts: inCartType[]
+  setInCartProducts: React.Dispatch<React.SetStateAction<inCartType[]>>
 }
 
-export type { ProductsContextType, ProductType }
+export type { ProductsContextType, ProductType, inCartType }
