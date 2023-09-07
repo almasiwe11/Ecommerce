@@ -21,6 +21,9 @@ function SingleProduct() {
   }, [product])
 
   const [amount, setAmount] = useState(1)
+  useEffect(() => {
+    setAmount(1)
+  }, [product])
   return (
     <div className="wrapper pt-24 ">
       <span

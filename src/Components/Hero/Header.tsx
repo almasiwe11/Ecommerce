@@ -18,7 +18,7 @@ function Header({ cartIsOpen, setCartIsOpen }: PropTypes): JSX.Element {
   const { product } = useParams()
   return (
     <div
-      className={`z-40 lg:border-0 ${!isHomePage && "bg-black"} ${
+      className={`z-40 lg:border-0 ${!isHomePage && "bg-black "} ${
         !product && "border-b border-grayish "
       }`}
     >

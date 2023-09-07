@@ -5,7 +5,7 @@ function Footer() {
   const pages: string[] = ["Home", "Headphones", "Speakers", "Earphones"]
 
   return (
-    <div className="bg-black relativept-10 pb-7 md:pt-10 md:pb-6 lg:pt-20 lg:pb-12 ">
+    <div className="bg-black relative pt-10 pb-7 md:pt-10 md:pb-6 lg:pt-20 lg:pb-12 ">
       <div className=" wrapper  flex justify-center md:justify-start">
         <div className="border-2 border-orange absolute top-0 w-20"></div>
       </div>
