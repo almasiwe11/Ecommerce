@@ -2,7 +2,7 @@ import { useState } from "react"
 import Hamburger from "./Hamburger"
 import Logo from "../Svgs/Logo"
 import NavMenu from "../NavMenu"
-import Cart from "../Svgs/Cart"
+import Cart from "../Svgs/CartIcon"
 import { useLocation } from "react-router"
 import { useParams } from "react-router"
 function Header(): JSX.Element {
@@ -11,14 +11,13 @@ function Header(): JSX.Element {
   const location = useLocation()
   const isHomePage = location.pathname === "/"
   const { product } = useParams()
-  console.log(product)
   return (
     <div
       className={`z-40 lg:border-0 ${!isHomePage && "bg-black"} ${
         !product && "border-b border-grayish "
       }`}
     >
-      <section className={`wrapper  `}>
+      <section className={`wrapper z-40 `}>
         <div className="flex items-center   py-8 md:py-10">
           <div className="flex w-full justify-between md:justify-normal">
             <Hamburger

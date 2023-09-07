@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import Features from "./Features"
 import Product from "./Product"
 import ProductGallery from "./ProductGallery"
+import Others from "./Others"
 
 function SingleProduct() {
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ function SingleProduct() {
 
   const [amount, setAmount] = useState(1)
   return (
-    <div className="wrapper mt-24">
+    <div className="wrapper pt-24 ">
       <span
         className="text-grayish cursor-pointer "
         onClick={() => navigate(-1)}
@@ -38,6 +39,7 @@ function SingleProduct() {
           />
           <Features thisProduct={thisProduct} />
           <ProductGallery thisProduct={thisProduct} />
+          <Others thisProduct={thisProduct} />
         </>
       )}
     </div>

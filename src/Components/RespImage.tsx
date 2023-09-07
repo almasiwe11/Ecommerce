@@ -1,9 +1,9 @@
 type PropTypes = {
-  mobile: string
-  desktop: string
+  mobile?: string
+  desktop?: string
   style?: string
   tablet?: string
-  alt: string
+  alt?: string
 }
 
 function RespImage({

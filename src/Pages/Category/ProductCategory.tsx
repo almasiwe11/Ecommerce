@@ -31,7 +31,7 @@ function ProductCategory({
 
         <h1 className="font-big">{product.name}</h1>
         <p className="text-grayish">{product.description}</p>
-        <ButtonLink orange={true} sendHere={product.slug} />
+        <ButtonLink orange={true} product={product} />
       </div>
     </div>
   )

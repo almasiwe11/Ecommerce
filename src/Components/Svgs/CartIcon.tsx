@@ -1,4 +1,4 @@
-function Cart({ style }: { style: string }) {
+function CartIcon({ style }: { style: string }) {
   return (
     <svg
       width="23"
@@ -16,4 +16,4 @@ function Cart({ style }: { style: string }) {
   )
 }
 
-export default Cart
+export default CartIcon

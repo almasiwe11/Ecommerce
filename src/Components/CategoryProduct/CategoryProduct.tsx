@@ -1,5 +1,5 @@
 import ArrowRight from "../Svgs/ArrowRight"
-
+import { Link } from "react-router-dom"
 function CategoryProduct({
   img,
   alt,
@@ -10,7 +10,10 @@ function CategoryProduct({
   product: string
 }): JSX.Element {
   return (
-    <div className=" bg-white-gray flex flex-col items-center rounded-lg  relative  w-full shadow-sm cursor-pointer ">
+    <Link
+      to={`/${product}`}
+      className=" bg-white-gray  flex flex-col items-center rounded-lg  relative  w-full shadow-sm cursor-pointer "
+    >
       <img
         src={img}
         alt={alt}
@@ -23,7 +26,7 @@ function CategoryProduct({
           <ArrowRight />
         </button>
       </div>
-    </div>
+    </Link>
   )
 }
 
