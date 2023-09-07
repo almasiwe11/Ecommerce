@@ -1,8 +1,29 @@
+import { useRef, useEffect } from "react"
 import ButtonLink from "../ButtonLink"
 
-function Cart() {
+type PropTypes = {
+  setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function Cart({ setCartIsOpen }: PropTypes) {
+  const cartRef = useRef<HTMLElement | null>(null)
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (!cartRef?.current?.contains(e.target as Node)) {
+        setCartIsOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handler)
+    return () => {
+      document.removeEventListener("mousedown", handler)
+    }
+  })
+
   return (
-    <section className="fixed p-6 bg-cyan-300 rounded-xl w-[24rem] right-40 top-24">
+    <section
+      ref={cartRef}
+      className="fixed p-6 bg-cyan-300 rounded-xl w-[24rem] right-40 top-24"
+    >
       <div className=" flex flex-col  gap-6">
         <div className="flex justify-between">
           <h1 className="uppercase tracking-wider font-bold font-lg">cart</h1>

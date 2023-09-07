@@ -2,10 +2,15 @@ import { useState } from "react"
 import Hamburger from "./Hamburger"
 import Logo from "../Svgs/Logo"
 import NavMenu from "../NavMenu"
-import Cart from "../Svgs/CartIcon"
+import CartIcon from "../Svgs/CartIcon"
 import { useLocation } from "react-router"
 import { useParams } from "react-router"
-function Header(): JSX.Element {
+
+type PropTypes = {
+  cartIsOpen: boolean
+  setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+function Header({ cartIsOpen, setCartIsOpen }: PropTypes): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const pages: string[] = ["home", "headphones", "speakers", "earphones"]
   const location = useLocation()
@@ -35,7 +40,10 @@ function Header(): JSX.Element {
               liStyle="hover:text-orange ease-in-out duration-300"
             ></NavMenu>
 
-            <Cart style={"group-hover:fill-orange duration-300 ease-in-out "} />
+            <CartIcon
+              style={"group-hover:fill-orange duration-300 ease-in-out "}
+              setCartIsOpen={setCartIsOpen}
+            />
           </div>
         </div>
         <div className={`${!product && "border-grayish lg:border "}`}></div>

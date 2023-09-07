@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom"
+import { useState } from "react"
 import Header from "../Components/Hero/Header"
 import ByOne from "../Components/ByOne/ByOne"
 import AllProducts from "../Components/AllProducts/AllProducts"
@@ -8,9 +9,10 @@ import Cart from "../Components/Cart/Cart"
 function Layout() {
   const location = useLocation()
   const isHomePage = location.pathname === "/"
+  const [cartIsOpen, setCartIsOpen] = useState(false)
   return (
     <>
-      <Header />
+      <Header cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
       <div className="relative pb-12 md:pb-20">
         <Outlet />
         <AllProducts />
@@ -18,9 +20,11 @@ function Layout() {
         <Bring />
 
         <div
-          className={`absolute hidden inset-0 h-full w-full bg-black/30`}
+          className={`absolute ${
+            !cartIsOpen && "hidden"
+          } inset-0 h-full w-full bg-black/30 cursor-pointer`}
         ></div>
-        <Cart />
+        {cartIsOpen && <Cart setCartIsOpen={setCartIsOpen} />}
       </div>
 
       <Footer />
