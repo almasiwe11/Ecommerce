@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Hamburger from "./Hamburger"
 import Logo from "../Svgs/Logo"
 import NavMenu from "../NavMenu"
@@ -14,7 +14,8 @@ function Header({}): JSX.Element {
   const location = useLocation()
   const isHomePage = location.pathname === "/"
   const { product } = useParams()
-  const { cartIsOpen, setCartIsOpen } = useProducts()
+  const { cartIsOpen } = useProducts()
+  const iconRef = useRef<SVGSVGElement | null>(null)
   return (
     <div
       className={` lg:border-0 z-50  ${!isHomePage && "bg-black "} ${
@@ -41,13 +42,14 @@ function Header({}): JSX.Element {
 
             <CartIcon
               style={"group-hover:fill-orange duration-300 ease-in-out "}
+              iconRef={iconRef}
             />
           </div>
         </div>
         <div
           className={`${!product && "border-grayish lg:border z-50 "}`}
         ></div>
-        {cartIsOpen && <Cart setCartIsOpen={setCartIsOpen} />}
+        {cartIsOpen && <Cart iconRef={iconRef} />}
       </section>
     </div>
   )

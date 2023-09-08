@@ -4,9 +4,10 @@ import AmountInput from "../../Pages/SingleProduct/AmountInput"
 import { useState, useEffect } from "react"
 type PropTypes = {
   product: inCartType
+  checkout?: boolean
 }
 
-function CartProduct({ product }: PropTypes) {
+function CartProduct({ product, checkout = false }: PropTypes) {
   const [amount, setAmount] = useState(product.amount)
 
   const { setInCartProducts } = useProducts()
@@ -38,7 +39,11 @@ function CartProduct({ product }: PropTypes) {
           <div className="text-grayish">$ {product.price}</div>
         </div>
       </div>
-      <AmountInput amount={amount} setAmount={setAmount} />
+      {checkout ? (
+        <span className="text-grayish">x{amount}</span>
+      ) : (
+        <AmountInput amount={amount} setAmount={setAmount} />
+      )}
     </div>
   )
 }

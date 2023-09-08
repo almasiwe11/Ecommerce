@@ -1,19 +1,25 @@
 import { useRef, useEffect, useState } from "react"
-import ButtonLink from "../ButtonLink"
 import { useProducts } from "../../Context/ProductsContext"
 import CartProduct from "./CartProduct"
 import { Link } from "react-router-dom"
 
 type PropTypes = {
-  setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  checkout?: boolean
+  iconRef: any
 }
 
-function Cart({ setCartIsOpen }: PropTypes) {
+function Cart({ checkout = false, iconRef }: PropTypes) {
   const cartRef = useRef<HTMLElement | null>(null)
+
+  const { setCartIsOpen } = useProducts()
 
   useEffect(() => {
     function handler(e: MouseEvent) {
-      if (!cartRef?.current?.contains(e.target as Node)) {
+      if (setCartIsOpen === undefined) return
+      if (
+        !cartRef?.current?.contains(e.target as Node) &&
+        !iconRef?.current?.contains(e.target as Node)
+      ) {
         setCartIsOpen(false)
       }
     }
@@ -37,50 +43,93 @@ function Cart({ setCartIsOpen }: PropTypes) {
   return (
     <section
       ref={cartRef}
-      className={`fixed  right-40 top-24 z-50 p-6 overflow-auto bg-white rounded-xl w-[26rem]`}
-      style={{ maxHeight: "calc(100vh - 100px)" }}
+      className={`${
+        !checkout && "fixed  right-40 top-24 z-50 w-[26rem]"
+      } p-6 overflow-auto bg-white rounded-xl `}
+      style={!checkout ? { maxHeight: "calc(100vh - 100px)" } : {}}
     >
       <div className=" flex flex-col  gap-6">
-        <div className="flex justify-between">
-          <h1 className="uppercase tracking-wider font-bold font-lg">cart</h1>
-          <div
-            onClick={() => setInCartProducts([])}
-            className="text-orange ease-in-out cursor-pointer duration-300 hover:underline"
-          >
-            Remove all
+        {!checkout ? (
+          <div className="flex justify-between">
+            <h1 className="uppercase tracking-wider font-bold font-lg">cart</h1>
+            <div
+              onClick={() => setInCartProducts([])}
+              className="text-orange ease-in-out cursor-pointer duration-300 hover:underline"
+            >
+              Remove all
+            </div>
           </div>
-        </div>
+        ) : (
+          <h1 className="font-bold text-xl">Summary</h1>
+        )}
 
         <div className="flex flex-col gap-4 ">
           {inCartProducts.map((product) => (
-            <CartProduct key={product.name} product={product}></CartProduct>
+            <CartProduct
+              key={product.name}
+              product={product}
+              checkout={checkout}
+            ></CartProduct>
           ))}
         </div>
 
-        <div className="flex justify-between uppercase">
-          <div className="text-grayish">Total</div>
-          <span>$ {total} </span>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between uppercase">
+            <div className="text-grayish">Total</div>
+            <span className="font-bold">$ {total} </span>
+          </div>
+          {checkout && (
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between uppercase">
+                <div className="text-grayish">Shipping</div>
+                <span className="font-bold">$ 50 </span>
+              </div>
+              <div className="flex justify-between uppercase">
+                <div className="text-grayish">VAT (included)</div>
+                <span className="font-bold">$ {Math.round(total * 0.2)} </span>
+              </div>
+
+              <div className="flex justify-between uppercase mt-4">
+                <div className="text-grayish">Grand Total</div>
+                <span className="text-orange">$ {total + 50} </span>
+              </div>
+            </div>
+          )}
         </div>
 
-        {inCartProducts.length > 0 ? (
-          <Link to="/checkout">
-            <button
-              onClick={() => {
-                setCartIsOpen(false)
-              }}
-              className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
-            >
-              checkout
-            </button>
-          </Link>
-        ) : (
+        {!checkout && (
+          <>
+            {inCartProducts.length > 0 ? (
+              <Link to="/checkout">
+                <button
+                  onClick={() => {
+                    if (setCartIsOpen === undefined) return
+                    setCartIsOpen(false)
+                  }}
+                  className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
+                >
+                  checkout
+                </button>
+              </Link>
+            ) : (
+              <button
+                onClick={() => {
+                  if (setCartIsOpen === undefined) return
+                  setCartIsOpen(false)
+                }}
+                className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
+              >
+                back
+              </button>
+            )}
+          </>
+        )}
+
+        {checkout && (
           <button
-            onClick={() => {
-              setCartIsOpen(false)
-            }}
             className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
           >
-            back
+            continue & pay
           </button>
         )}
       </div>
