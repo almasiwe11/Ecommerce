@@ -7,18 +7,32 @@ type PropTypes = {
 }
 
 function ButtonAddCart({ amount, thisProduct }: PropTypes) {
-  const { setInCartProducts } = useProducts()
+  const { setInCartProducts, inCartProducts } = useProducts()
 
   function handleAddToCart() {
-    console.log(thisProduct)
-    const addingProduct: inCartType = {
-      image: thisProduct.cart,
-      name: thisProduct.name,
-      price: thisProduct.price,
-      amount: amount,
+    const there = inCartProducts.find(
+      (product) => product.name === thisProduct.name
+    )
+    if (!there) {
+      const addingProduct: inCartType = {
+        image: thisProduct.cart,
+        name: thisProduct.name,
+        price: thisProduct.price,
+        amount: amount,
+      }
+      setInCartProducts((prev) => [...prev, addingProduct])
+    } else {
+      setInCartProducts((prev) =>
+        prev.map((product) => {
+          if (there === product) {
+            const newAmount = product.amount + amount
+            return { ...product, amount: newAmount }
+          } else {
+            return product
+          }
+        })
+      )
     }
-
-    setInCartProducts((prev) => [...prev, addingProduct])
   }
 
   return (

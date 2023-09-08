@@ -16,9 +16,12 @@ const ProductsContext = createContext<ProductsContextType | null>(null)
 function ProductsProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<ProductType[]>([])
   const [categoryList, setCategoryList] = useState<string[]>([])
-  const [inCartProducts, setInCartProducts] = useState<inCartType[]>([])
+  const [inCartProducts, setInCartProducts] =
+    useState<inCartType[]>(storageGetProducts)
 
-  console.log(inCartProducts)
+  useEffect(() => {
+    localStorage.setItem("inCart", JSON.stringify(inCartProducts))
+  }, [inCartProducts])
 
   useEffect(() => {
     async function getProducts() {
@@ -39,6 +42,11 @@ function ProductsProvider({ children }: { children: ReactNode }) {
 
     getProducts()
   }, [])
+
+  function storageGetProducts(): inCartType[] {
+    const items = JSON.parse(localStorage.getItem("inCart") || "[]")
+    return items
+  }
 
   return (
     <ProductsContext.Provider
