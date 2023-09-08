@@ -1,7 +1,8 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import ButtonLink from "../ButtonLink"
 import { useProducts } from "../../Context/ProductsContext"
 import CartProduct from "./CartProduct"
+import { Link } from "react-router-dom"
 
 type PropTypes = {
   setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -9,6 +10,7 @@ type PropTypes = {
 
 function Cart({ setCartIsOpen }: PropTypes) {
   const cartRef = useRef<HTMLElement | null>(null)
+
   useEffect(() => {
     function handler(e: MouseEvent) {
       if (!cartRef?.current?.contains(e.target as Node)) {
@@ -23,16 +25,28 @@ function Cart({ setCartIsOpen }: PropTypes) {
 
   const { inCartProducts, setInCartProducts } = useProducts()
 
+  function calcTotal(): number {
+    const total = inCartProducts.reduce((acc, item) => {
+      return (acc += item.price * item.amount)
+    }, 0)
+    return total
+  }
+
+  const total = calcTotal()
+
   return (
     <section
       ref={cartRef}
-      className="fixed p-6 overflow-auto bg-white rounded-xl w-[26rem] right-40 top-24"
+      className={`fixed  right-40 top-24 z-50 p-6 overflow-auto bg-white rounded-xl w-[26rem]`}
       style={{ maxHeight: "calc(100vh - 100px)" }}
     >
       <div className=" flex flex-col  gap-6">
         <div className="flex justify-between">
           <h1 className="uppercase tracking-wider font-bold font-lg">cart</h1>
-          <div className="text-orange ease-in-out cursor-pointer duration-300 hover:underline">
+          <div
+            onClick={() => setInCartProducts([])}
+            className="text-orange ease-in-out cursor-pointer duration-300 hover:underline"
+          >
             Remove all
           </div>
         </div>
@@ -45,14 +59,30 @@ function Cart({ setCartIsOpen }: PropTypes) {
 
         <div className="flex justify-between uppercase">
           <div className="text-grayish">Total</div>
-          <span>$ 242</span>
+          <span>$ {total} </span>
         </div>
 
-        <button
-          className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
-        >
-          checkout
-        </button>
+        {inCartProducts.length > 0 ? (
+          <Link to="/checkout">
+            <button
+              onClick={() => {
+                setCartIsOpen(false)
+              }}
+              className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
+            >
+              checkout
+            </button>
+          </Link>
+        ) : (
+          <button
+            onClick={() => {
+              setCartIsOpen(false)
+            }}
+            className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
+          >
+            back
+          </button>
+        )}
       </div>
     </section>
   )

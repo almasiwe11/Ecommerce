@@ -19,7 +19,7 @@ function Others({ thisProduct }: PropTypes) {
           const theProduct = products.find((pro) => pro.slug === other.slug)
 
           return (
-            <div className="flex flex-col gap-8 items-center">
+            <div className="flex flex-col gap-8 items-center" key={other.slug}>
               <RespImage
                 desktop={other.image.desktop}
                 tablet={other.image.tablet}

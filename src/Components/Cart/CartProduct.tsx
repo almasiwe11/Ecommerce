@@ -1,12 +1,28 @@
+import { useProducts } from "../../Context/ProductsContext"
 import { inCartType } from "../../Modules/TypesContext"
 import AmountInput from "../../Pages/SingleProduct/AmountInput"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 type PropTypes = {
   product: inCartType
 }
 
 function CartProduct({ product }: PropTypes) {
   const [amount, setAmount] = useState(product.amount)
+
+  const { setInCartProducts } = useProducts()
+
+  useEffect(() => {
+    setInCartProducts((prev) => {
+      return prev.map((item) => {
+        if (item === product) {
+          return { ...item, amount: amount }
+        } else {
+          return item
+        }
+      })
+    })
+  }, [amount])
+
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-4">

@@ -58,6 +58,8 @@ type inCartType = {
 }
 
 type ProductsContextType = {
+  cartIsOpen?: boolean
+  setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   products: ProductType[]
   categoryList: string[]
   inCartProducts: inCartType[]

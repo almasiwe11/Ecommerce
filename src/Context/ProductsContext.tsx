@@ -16,6 +16,7 @@ const ProductsContext = createContext<ProductsContextType | null>(null)
 function ProductsProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<ProductType[]>([])
   const [categoryList, setCategoryList] = useState<string[]>([])
+  const [cartIsOpen, setCartIsOpen] = useState(false)
   const [inCartProducts, setInCartProducts] =
     useState<inCartType[]>(storageGetProducts)
 
@@ -50,7 +51,14 @@ function ProductsProvider({ children }: { children: ReactNode }) {
 
   return (
     <ProductsContext.Provider
-      value={{ products, categoryList, inCartProducts, setInCartProducts }}
+      value={{
+        products,
+        categoryList,
+        inCartProducts,
+        cartIsOpen,
+        setCartIsOpen,
+        setInCartProducts,
+      }}
     >
       {children}
     </ProductsContext.Provider>

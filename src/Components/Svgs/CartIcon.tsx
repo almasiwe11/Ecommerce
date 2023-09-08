@@ -1,10 +1,7 @@
-function CartIcon({
-  style,
-  setCartIsOpen,
-}: {
-  style: string
-  setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}) {
+import { useProducts } from "../../Context/ProductsContext"
+
+function CartIcon({ style }: { style: string }) {
+  const { setCartIsOpen } = useProducts()
   return (
     <svg
       width="23"

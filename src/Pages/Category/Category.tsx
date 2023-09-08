@@ -19,7 +19,7 @@ function Category() {
 
   return (
     <section>
-      <div className="bg-black h-[24vh]  md:h-[33 vh] flex-center">
+      <div className="bg-black h-[24vh]  md:h-[33vh] flex-center">
         <h1
           ref={scrollRef}
           className="text-4xl text-white uppercase tracking-wider "

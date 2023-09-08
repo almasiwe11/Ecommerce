@@ -6,8 +6,11 @@ import speakerbigtb from "/assets/home/tablet/image-speaker-zx9.png"
 import speakerbigmb from "/assets/home/mobile/image-speaker-zx9.png"
 
 import RespImage from "../RespImage"
+import { useProducts } from "../../Context/ProductsContext"
+import ButtonLink from "../ButtonLink"
 
 function ByOne() {
+  const { products } = useProducts()
   return (
     <section className="wrapper flex flex-col gap-10  mt-32">
       <div className="bg-orange flex flex-col gap-12 lg:grid lg:grid-cols-2 px-4 md:px-10 pb-12 pt-16 lg:py-36 relative overflow-hidden rounded-xl ">
@@ -30,18 +33,24 @@ function ByOne() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <button className="bg-black text-white px-6 py-3 uppercase tracking-wider duration-300 ease-in-out border border-black hover:bg-transparent hover:text-black">
-            See product
-          </button>
+          {products && (
+            <ButtonLink
+              product={products.find((pro) => pro.name === "ZX9 Speaker")}
+              style="bg-black hover:opacity-80"
+            />
+          )}
         </div>
       </div>
 
       <div className="relative h-[21rem] rounded-xl flex items-center overflow-hidden bg-speaker-mobile  bg-center bg-cover bg-no-repeat px-6 md:bg-speaker-tablet lg:bg-speaker-desktop">
         <div className=" flex flex-col gap-6 items-start">
           <h1 className="uppercase font-bold text-4xl">ZX7 Speaker</h1>
-          <button className="bg-transparent border border-black py-3 px-6 uppercase tracking-wider duration-300 ease-in-out hover:bg-black hover:text-white ">
-            See product
-          </button>
+          {products && (
+            <ButtonLink
+              product={products.find((pro) => pro.name === "ZX7 Speaker")}
+              style="bg-transparent text-black border border-black hover:bg-black hover:text-white "
+            />
+          )}
         </div>
       </div>
 
@@ -57,9 +66,12 @@ function ByOne() {
           <h1 className="uppercase font-bold text-4xl tracking-wider">
             YX1 Earphones
           </h1>
-          <button className="bg-transparent border border-black py-3 px-6 uppercase tracking-wider duration-300 ease-in-out hover:bg-black hover:text-white active:scale-[98%]">
-            See product
-          </button>
+          {products && (
+            <ButtonLink
+              product={products.find((pro) => pro.id === 1)}
+              style="bg-transparent text-black border border-black hover:bg-black hover:text-white "
+            />
+          )}
         </div>
       </div>
     </section>

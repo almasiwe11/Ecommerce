@@ -5,26 +5,25 @@ import NavMenu from "../NavMenu"
 import CartIcon from "../Svgs/CartIcon"
 import { useLocation } from "react-router"
 import { useParams } from "react-router"
+import Cart from "../Cart/Cart"
+import { useProducts } from "../../Context/ProductsContext"
 
-type PropTypes = {
-  cartIsOpen: boolean
-  setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
-function Header({ cartIsOpen, setCartIsOpen }: PropTypes): JSX.Element {
+function Header({}): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const pages: string[] = ["home", "headphones", "speakers", "earphones"]
   const location = useLocation()
   const isHomePage = location.pathname === "/"
   const { product } = useParams()
+  const { cartIsOpen, setCartIsOpen } = useProducts()
   return (
     <div
-      className={`z-40 lg:border-0 ${!isHomePage && "bg-black "} ${
-        !product && "border-b border-grayish "
+      className={` lg:border-0 z-50  ${!isHomePage && "bg-black "} ${
+        !product && "border-b z-50 border-grayish "
       }`}
     >
-      <section className={`wrapper z-40 `}>
-        <div className="flex items-center   py-8 md:py-10">
-          <div className="flex w-full justify-between md:justify-normal">
+      <section className={`wrapper z-50  `}>
+        <div className="flex items-center z-50  py-8 md:py-10">
+          <div className="flex z-50 w-full justify-between md:justify-normal">
             <Hamburger
               isOpen={isOpen}
               setIsOpen={setIsOpen}
@@ -42,11 +41,13 @@ function Header({ cartIsOpen, setCartIsOpen }: PropTypes): JSX.Element {
 
             <CartIcon
               style={"group-hover:fill-orange duration-300 ease-in-out "}
-              setCartIsOpen={setCartIsOpen}
             />
           </div>
         </div>
-        <div className={`${!product && "border-grayish lg:border "}`}></div>
+        <div
+          className={`${!product && "border-grayish lg:border z-50 "}`}
+        ></div>
+        {cartIsOpen && <Cart setCartIsOpen={setCartIsOpen} />}
       </section>
     </div>
   )

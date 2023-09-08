@@ -5,11 +5,11 @@ import ByOne from "../Components/ByOne/ByOne"
 import AllProducts from "../Components/AllProducts/AllProducts"
 import Bring from "../Components/Bring/Bring"
 import Footer from "../Components/Footer/Footer"
-import Cart from "../Components/Cart/Cart"
+import { useProducts } from "../Context/ProductsContext"
 function Layout() {
   const location = useLocation()
   const isHomePage = location.pathname === "/"
-  const [cartIsOpen, setCartIsOpen] = useState(false)
+  const { cartIsOpen } = useProducts()
 
   useEffect(() => {
     if (cartIsOpen) {
@@ -25,7 +25,7 @@ function Layout() {
 
   return (
     <>
-      <Header cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
+      <Header />
       <Outlet />
       <AllProducts />
       {isHomePage && <ByOne />}
@@ -36,7 +36,6 @@ function Layout() {
           !cartIsOpen && "hidden"
         } fixed inset-0 h-[90vhs] bottom-0 top-24 w-full bg-black/30  cursor-pointer`}
       ></div>
-      {cartIsOpen && <Cart setCartIsOpen={setCartIsOpen} />}
 
       <Footer />
     </>

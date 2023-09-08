@@ -6,7 +6,7 @@ import RespImage from "../RespImage"
 
 function Bring() {
   return (
-    <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 wrapper mt-32">
+    <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 wrapper mt-32 pb-32">
       <div className="flex flex-col text-center lg:text-left justify-center gap-8 lg:pr-16 order-1 lg:-order-1  ">
         <h1 className="uppercase text-3xl lg:text-4xl tracking-wider font-bold ">
           Bring you the <span className="text-orange"> best</span> audio gear
