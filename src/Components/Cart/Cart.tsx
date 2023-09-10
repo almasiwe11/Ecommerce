@@ -63,16 +63,19 @@ function Cart({ checkout = false, iconRef }: PropTypes) {
         ) : (
           <h1 className="font-bold text-xl">Summary</h1>
         )}
-
-        <div className="flex flex-col gap-4 ">
-          {inCartProducts.map((product) => (
-            <CartProduct
-              key={product.name}
-              product={product}
-              checkout={checkout}
-            ></CartProduct>
-          ))}
-        </div>
+        {inCartProducts.length > 0 ? (
+          <div className="flex flex-col gap-4 ">
+            {inCartProducts.map((product) => (
+              <CartProduct
+                key={product.name}
+                product={product}
+                checkout={checkout}
+              ></CartProduct>
+            ))}
+          </div>
+        ) : (
+          <p className="font-bold text-center text-xl">Your cart is empty</p>
+        )}
 
         <div className="flex flex-col gap-2">
           <div className="flex justify-between uppercase">
@@ -107,7 +110,7 @@ function Cart({ checkout = false, iconRef }: PropTypes) {
                     if (setCartIsOpen === undefined) return
                     setCartIsOpen(false)
                   }}
-                  className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
+                  className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300  w-full ease-in-out`}
                 >
                   checkout
                 </button>
@@ -118,7 +121,7 @@ function Cart({ checkout = false, iconRef }: PropTypes) {
                   if (setCartIsOpen === undefined) return
                   setCartIsOpen(false)
                 }}
-                className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
+                className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 w-full  ease-in-out`}
               >
                 back
               </button>
