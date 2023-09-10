@@ -34,7 +34,54 @@ function Checkout() {
     address: Yup.string().required("Address cannot be empty"),
     zipCode: Yup.string().required("ZIP Code cannot be empty"),
     city: Yup.string().required("City cannot be empty"),
+    paymentMethod: Yup.string(),
     country: Yup.string().required("Country cannot be empty"),
+    "e-money number": Yup.string().test({
+      name: "conditional-validation",
+      exclusive: false,
+      test: function (value) {
+        const isEMoneyPayment = this.parent.paymentMethod === "e-Money"
+        if (isEMoneyPayment) {
+          if (!value) {
+            return this.createError({
+              path: this.path,
+              message: "Required for e-Money",
+            })
+          }
+
+          if (!/^\d+$/.test(value)) {
+            return this.createError({
+              path: this.path,
+              message: "Must be a number",
+            })
+          }
+        }
+        return true
+      },
+    }),
+    "e-money Pin": Yup.string().test({
+      name: "conditional-validation",
+      exclusive: false,
+      test: function (value) {
+        const isEMoneyPayment = this.parent.paymentMethod === "e-Money"
+        if (isEMoneyPayment) {
+          if (!value) {
+            return this.createError({
+              path: this.path,
+              message: "Required for e-Money",
+            })
+          }
+
+          if (!/^\d+$/.test(value)) {
+            return this.createError({
+              path: this.path,
+              message: "Must be a number",
+            })
+          }
+        }
+        return true
+      },
+    }),
   }
 
   const onSubmit = () => {

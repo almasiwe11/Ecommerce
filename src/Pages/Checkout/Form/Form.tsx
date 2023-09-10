@@ -7,7 +7,7 @@ type PropTypes = {
   formik: FormikTypes
 }
 function Formm({ formik }: PropTypes) {
-  console.log(formik.values)
+  console.log(formik.errors)
   return (
     <div className="py-6 md:py-8 px-6 rounded-lg md:flex-grow  flex flex-col bg-white">
       <h1 className="uppercase tracking-wider text-2xl ">checkout</h1>
