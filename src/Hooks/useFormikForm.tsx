@@ -10,7 +10,7 @@ const initialValues: FormTypes = {
   zipCode: "",
   city: "",
   country: "",
-  "payment-method": "e-Money",
+  paymentMethod: "e-Money",
   "e-money number": "",
   "e-money Pin": "",
 }

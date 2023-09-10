@@ -35,6 +35,7 @@ function Input({ formik, name, placeholder, label, type = "text" }: PropTypes) {
         type={type}
         placeholder={placeholder}
         className={inputStyle}
+        onBlur={formik.handleBlur}
       />
     </div>
   )
