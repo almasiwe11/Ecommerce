@@ -1,8 +1,10 @@
+import { FormikTypes } from "../../../Modules/FormTypes"
+
 type PropTypes = {
-  handleFormChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  formik: FormikTypes
 }
 
-function BillingDetails({ handleFormChange }: PropTypes) {
+function BillingDetails({ formik }: PropTypes) {
   return (
     <div className="flex flex-col gap-3 mt-10 ">
       <div className=" text-orange tracking-wider uppercase">
@@ -14,20 +16,22 @@ function BillingDetails({ handleFormChange }: PropTypes) {
           <h2 className="font-bold">Name</h2>
           <input
             name="name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
             type="text"
             placeholder="Aleksei"
             className="border border-grayish rounded-lg py-2.5 px-5"
-            onChange={handleFormChange}
           />
         </div>
         <div className="flex flex-col gap-1">
           <h2 className="font-bold">Email Address</h2>
           <input
             name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
             type="text"
             placeholder="alexei@gmail.com"
             className="border border-grayish rounded-lg py-2.5 px-5"
-            onChange={handleFormChange}
           />
         </div>
       </div>
@@ -35,11 +39,12 @@ function BillingDetails({ handleFormChange }: PropTypes) {
       <div className="flex flex-col gap-1">
         <h2 className="font-bold">Phone Number</h2>
         <input
+          value={formik.values.phone}
+          onChange={formik.handleChange}
           name="phone"
           type="text"
           placeholder="+1(202)555-0136"
           className="border border-grayish rounded-lg py-2.5 px-5"
-          onChange={handleFormChange}
         />
       </div>
     </div>

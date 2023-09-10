@@ -1,11 +1,11 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect } from "react"
 import { useProducts } from "../../Context/ProductsContext"
 import CartProduct from "./CartProduct"
 import { Link } from "react-router-dom"
 
 type PropTypes = {
   checkout?: boolean
-  iconRef: any
+  iconRef?: any
 }
 
 function Cart({ checkout = false, iconRef }: PropTypes) {
@@ -16,6 +16,7 @@ function Cart({ checkout = false, iconRef }: PropTypes) {
   useEffect(() => {
     function handler(e: MouseEvent) {
       if (setCartIsOpen === undefined) return
+      if (!iconRef) return
       if (
         !cartRef?.current?.contains(e.target as Node) &&
         !iconRef?.current?.contains(e.target as Node)
@@ -128,6 +129,7 @@ function Cart({ checkout = false, iconRef }: PropTypes) {
         {checkout && (
           <button
             className={`${"hover:bg-transparent bg-orange border border-orange text-white hover:text-orange "}  py-3 px-6 uppercase  tracking-wider duration-300 ease-in-out`}
+            type={checkout ? "submit" : "button"}
           >
             continue & pay
           </button>

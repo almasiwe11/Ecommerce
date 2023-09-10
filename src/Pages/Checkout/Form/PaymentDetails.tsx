@@ -1,14 +1,12 @@
+import { FormikTypes } from "../../../Modules/FormTypes"
+
 type PropTypes = {
   buttonChecked: string
   setButtonChecked: React.Dispatch<React.SetStateAction<string>>
-  handleFormChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  formik: FormikTypes
 }
 
-function PaymentDetails({
-  buttonChecked,
-  setButtonChecked,
-  handleFormChange,
-}: PropTypes) {
+function PaymentDetails({ buttonChecked, setButtonChecked }: PropTypes) {
   return (
     <div className="mt-10">
       <div className=" text-orange  tracking-wider uppercase">
@@ -27,7 +25,6 @@ function PaymentDetails({
               checked={buttonChecked === "e-Money"}
               onChange={(e) => {
                 setButtonChecked(e.target.value)
-                handleFormChange(e)
               }}
             />
             <span className="ml-2">e-Money</span>
@@ -42,7 +39,6 @@ function PaymentDetails({
               checked={buttonChecked === "onDelivery"}
               onChange={(e) => {
                 setButtonChecked(e.target.value)
-                handleFormChange(e)
               }}
             />
             <span className="ml-2">Cash on Delivery</span>
@@ -55,7 +51,6 @@ function PaymentDetails({
           <div className="flex flex-col gap-1">
             <h2 className="font-bold">e-Money Number</h2>
             <input
-              onChange={handleFormChange}
               name="e-Money Number"
               type="text"
               placeholder="238521993"
@@ -66,7 +61,6 @@ function PaymentDetails({
           <div className="flex flex-col gap-1">
             <h2 className="font-bold">e-Money Pin</h2>
             <input
-              onChange={handleFormChange}
               name="e-Money Pin"
               type="text"
               placeholder="6891"

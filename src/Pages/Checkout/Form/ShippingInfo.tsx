@@ -1,8 +1,10 @@
+import { FormikTypes } from "../../../Modules/FormTypes"
+
 type PropTypes = {
-  handleFormChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  formik: FormikTypes
 }
 
-function ShippingInfo({ handleFormChange }: PropTypes) {
+function ShippingInfo({ formik }: PropTypes) {
   return (
     <div className="flex flex-col mt-10 gap-4">
       <div className=" text-orange mb-5 tracking-wider uppercase">
@@ -12,7 +14,8 @@ function ShippingInfo({ handleFormChange }: PropTypes) {
       <div className="flex flex-col gap-1">
         <h2 className="font-bold">Address</h2>
         <input
-          onChange={handleFormChange}
+          value={formik.values.address}
+          onChange={formik.handleChange}
           name="address"
           type="text"
           placeholder="1137 Williams Avenue"
@@ -24,8 +27,9 @@ function ShippingInfo({ handleFormChange }: PropTypes) {
         <div className="flex flex-col gap-1">
           <h2 className="font-bold">ZIP Code</h2>
           <input
-            onChange={handleFormChange}
-            name="zip"
+            value={formik.values.zipCode}
+            onChange={formik.handleChange}
+            name="zipCode"
             type="text"
             placeholder="10001"
             className="border border-grayish rounded-lg py-2.5 px-5"
@@ -34,7 +38,8 @@ function ShippingInfo({ handleFormChange }: PropTypes) {
         <div className="flex flex-col gap-1">
           <h2 className="font-bold">City</h2>
           <input
-            onChange={handleFormChange}
+            value={formik.values.city}
+            onChange={formik.handleChange}
             name="city"
             type="text"
             placeholder="New York"
@@ -46,7 +51,8 @@ function ShippingInfo({ handleFormChange }: PropTypes) {
       <div className="flex flex-col gap-1">
         <h2 className="font-bold">County</h2>
         <input
-          onChange={handleFormChange}
+          value={formik.values.country}
+          onChange={formik.handleChange}
           name="country"
           type="text"
           placeholder="United States"
