@@ -51,8 +51,10 @@ const validate = {
     }),
   phone: Yup.string()
     .required("Phone cannot be empty")
-    .matches(/^\+\d{4}-\d{3}-\d{4}$/, "Right format +1234-456-7890"),
-  address: Yup.string().required("Address cannot be empty"),
+    .matches(/^(\+\d{4}-\d{3}-\d{4}|\+\d{12}|\d{11})$/, "Wrong Format"),
+  address: Yup.string()
+    .required("Address cannot be empty")
+    .matches(/^\d+\s[A-Za-z]/, "Wrong Format"),
   zipCode: Yup.string().required("ZIP Code cannot be empty"),
   city: Yup.string().required("City cannot be empty"),
   paymentMethod: Yup.string(),

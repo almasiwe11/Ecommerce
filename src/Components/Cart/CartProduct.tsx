@@ -5,9 +5,10 @@ import { useState, useEffect } from "react"
 type PropTypes = {
   product: inCartType
   checkout?: boolean
+  thanks?: boolean
 }
 
-function CartProduct({ product, checkout = false }: PropTypes) {
+function CartProduct({ product, checkout = false, thanks = false }: PropTypes) {
   const [amount, setAmount] = useState(product.amount)
 
   const { setInCartProducts } = useProducts()
@@ -26,14 +27,18 @@ function CartProduct({ product, checkout = false }: PropTypes) {
 
   return (
     <div className="flex justify-between items-center">
-      <div className="flex gap-4">
+      <div className={`flex ${thanks ? "gap-2" : "gap-4"} `}>
         <img
           className="max-w-[5rem]"
           src={product.image}
           alt={`${product.name} cart image`}
         />
         <div className="flex flex-col justify-center">
-          <div className="font-bold text-lg tracking-wider uppercase">
+          <div
+            className={`font-bold ${
+              thanks ? "text-sm" : "text-lg"
+            } tracking-wider uppercase`}
+          >
             {product.name}
           </div>
           <div className="text-grayish">$ {product.price}</div>

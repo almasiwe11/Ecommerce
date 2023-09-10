@@ -15,7 +15,7 @@ function Thanks() {
 
   return (
     <div className="fixed flex-center top-0 h-screen z-50  w-screen">
-      <div className="bg-white w-[90%] max-w-xl p-6 md:p-9 lg:p-11 md:py-12 flex flex-col gap-5">
+      <div className="bg-white rounded-lg w-[90%] max-w-xl p-6 md:p-9 lg:p-11 md:py-12 flex flex-col gap-5">
         <CheckMark />
         <h1 className="font-bold text-3xl uppercase">
           Thank you <br></br> for your order
@@ -27,7 +27,7 @@ function Thanks() {
 
         <div className="flex flex-col md:grid md:grid-cols-2">
           <div className="bg-white-gray p-3 rounded-t-lg md:rounded-l-lg">
-            <CartProduct product={firstItem} checkout={true} />
+            <CartProduct product={firstItem} checkout={true} thanks={true} />
             <hr></hr>
             <div className="py-2">
               {inCartProducts.length > 1 && (
