@@ -18,7 +18,7 @@ function Input({ formik, name, placeholder, label, type = "text" }: PropTypes) {
   }
 
   return (
-    <div className="flex flex-col gap-1 ">
+    <div className="flex flex-col gap-1  ">
       <div className="flex justify-between">
         <label
           htmlFor={name}
@@ -26,7 +26,13 @@ function Input({ formik, name, placeholder, label, type = "text" }: PropTypes) {
         >
           {label}
         </label>
-        <span className="text-red text-end text-sm">{formik.errors[name]}</span>
+        <span
+          className={`${
+            hasError(name) ? "block" : "hidden"
+          } text-red text-end text-sm`}
+        >
+          {formik.errors[name]}
+        </span>
       </div>
       <input
         value={formik.values[name]}

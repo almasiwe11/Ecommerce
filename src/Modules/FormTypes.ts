@@ -1,15 +1,5 @@
 import { FormikProps } from "formik"
 
-type EMoneyPayment = {
-  paymentMethod: "e-Money"
-  "e-money number": string
-  "e-money Pin": string
-}
-
-type OnDeliveryPayment = {
-  paymentMethod: "on-Delivery"
-}
-
 type FormTypes = {
   name: string
   email: string
@@ -19,7 +9,9 @@ type FormTypes = {
   city: string
   country: string
   paymentMethod: "e-Money"
-} & (EMoneyPayment | OnDeliveryPayment)
+  "e-money number"?: string
+  "e-money Pin"?: string
+}
 
 type FormikTypes = FormikProps<FormTypes>
 
