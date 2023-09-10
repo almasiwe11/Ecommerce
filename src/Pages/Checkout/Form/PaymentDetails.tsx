@@ -47,7 +47,7 @@ function PaymentDetails({ buttonChecked, setButtonChecked }: PropTypes) {
       </div>
 
       {buttonChecked === "e-Money" && (
-        <div className="flex flex-col gap-3 mt-6 md:grid md:grid-cols-2">
+        <div className="flex flex-col gap-3 mt-6 md:grid items-end  md:grid-cols-2">
           <div className="flex flex-col gap-1">
             <h2 className="font-bold">e-Money Number</h2>
             <input

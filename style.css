@@ -6,10 +6,6 @@
   @apply flex flex-col lg:flex-row;
 }
 
-.show {
-  @apply border-2 border-red-600;
-}
-
 .show-bg {
   @apply bg-cyan-500;
 }

@@ -1,4 +1,5 @@
 import { FormikTypes } from "../../../Modules/FormTypes"
+import Input from "../../../Components/Input/Input"
 
 type PropTypes = {
   formik: FormikTypes
@@ -11,42 +12,27 @@ function BillingDetails({ formik }: PropTypes) {
         Billing details
       </div>
 
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-1">
-          <h2 className="font-bold">Name</h2>
-          <input
-            name="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            type="text"
-            placeholder="Aleksei"
-            className="border border-grayish rounded-lg py-2.5 px-5"
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <h2 className="font-bold">Email Address</h2>
-          <input
-            name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            type="text"
-            placeholder="alexei@gmail.com"
-            className="border border-grayish rounded-lg py-2.5 px-5"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <h2 className="font-bold">Phone Number</h2>
-        <input
-          value={formik.values.phone}
-          onChange={formik.handleChange}
-          name="phone"
-          type="text"
-          placeholder="+1(202)555-0136"
-          className="border border-grayish rounded-lg py-2.5 px-5"
+      <div className="flex flex-col md:grid md:grid-cols-2 items-end gap-4 ">
+        <Input
+          formik={formik}
+          label="Name"
+          name="name"
+          placeholder="Alexei Ward"
+        />
+        <Input
+          formik={formik}
+          label="Email Address"
+          name="email"
+          placeholder="alexei@mail.com"
         />
       </div>
+
+      <Input
+        formik={formik}
+        label="Phone Number"
+        name="phone"
+        placeholder="+1202-555-0136"
+      />
     </div>
   )
 }

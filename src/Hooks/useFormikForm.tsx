@@ -10,6 +10,9 @@ const initialValues: FormTypes = {
   zipCode: "",
   city: "",
   country: "",
+  "payment-method": "e-Money",
+  "e-money number": "",
+  "e-money Pin": "",
 }
 
 type useFormikFormProps = {
@@ -18,20 +21,22 @@ type useFormikFormProps = {
 
 export function useFormikForm({ onSubmit }: useFormikFormProps) {
   const validate = {
-    name: Yup.string().required("Name cannot bet empty"),
+    name: Yup.string().required("Name cannot be empty"),
     email: Yup.string()
-      .required("Email cannot bet empty")
+      .required("Email cannot be empty")
       .email("Looks like this is not an email")
       .test("valid-email", "Looks like this is not an email", (value) => {
         if (!value) return false
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
         return emailRegex.test(value)
       }),
-    phone: Yup.string().required("Phone cannot bet empty"),
-    address: Yup.string().required("Address cannot bet empty"),
-    zipCode: Yup.string().required("zipCode cannot bet empty"),
-    city: Yup.string().required("City cannot bet empty"),
-    county: Yup.string().required("Country cannot bet empty"),
+    phone: Yup.string()
+      .required("Phone cannot be empty")
+      .matches(/^\+\d{4}-\d{2}-\d{4}$/, "Right format +1234-56-7890"),
+    address: Yup.string().required("Address cannot be empty"),
+    zipCode: Yup.string().required("ZIP Code cannot be empty"),
+    city: Yup.string().required("City cannot be empty"),
+    country: Yup.string().required("Country cannot be empty"),
   }
 
   const formik = useFormik({

@@ -10,6 +10,7 @@ export default {
         whitish: "rgb(250, 250, 250)",
         orangeish: "rgb(251, 175, 133)",
         fill: "#191919",
+        red: "#CD2C2C",
         grayish: "#979797",
       },
       fontFamily: {

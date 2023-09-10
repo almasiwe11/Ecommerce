@@ -1,4 +1,5 @@
 import { FormikTypes } from "../../../Modules/FormTypes"
+import Input from "../../../Components/Input/Input"
 
 type PropTypes = {
   formik: FormikTypes
@@ -11,54 +12,34 @@ function ShippingInfo({ formik }: PropTypes) {
         Shipping Info
       </div>
 
-      <div className="flex flex-col gap-1">
-        <h2 className="font-bold">Address</h2>
-        <input
-          value={formik.values.address}
-          onChange={formik.handleChange}
-          name="address"
-          type="text"
-          placeholder="1137 Williams Avenue"
-          className="border border-grayish rounded-lg py-2.5 px-5"
+      <Input
+        formik={formik}
+        label="Address"
+        name="address"
+        placeholder="1137 Williams Avenue"
+      />
+
+      <div className="flex flex-col md:grid md:grid-cols-2 items-end  gap-4">
+        <Input
+          formik={formik}
+          label="ZIP Code"
+          name="zipCode"
+          placeholder="10001"
+        />
+        <Input
+          formik={formik}
+          label="City"
+          name="city"
+          placeholder="New York"
         />
       </div>
 
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-1">
-          <h2 className="font-bold">ZIP Code</h2>
-          <input
-            value={formik.values.zipCode}
-            onChange={formik.handleChange}
-            name="zipCode"
-            type="text"
-            placeholder="10001"
-            className="border border-grayish rounded-lg py-2.5 px-5"
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <h2 className="font-bold">City</h2>
-          <input
-            value={formik.values.city}
-            onChange={formik.handleChange}
-            name="city"
-            type="text"
-            placeholder="New York"
-            className="border border-grayish rounded-lg py-2.5 px-5"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <h2 className="font-bold">County</h2>
-        <input
-          value={formik.values.country}
-          onChange={formik.handleChange}
-          name="country"
-          type="text"
-          placeholder="United States"
-          className="border border-grayish rounded-lg py-2.5 px-5"
-        />
-      </div>
+      <Input
+        formik={formik}
+        label="Country"
+        name="country"
+        placeholder="United States"
+      />
     </div>
   )
 }
