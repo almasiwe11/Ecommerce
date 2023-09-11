@@ -11,11 +11,13 @@ import {
   inCartType,
 } from "../Modules/TypesContext"
 
+import data from "../../Data/data.json"
+
 const ProductsContext = createContext<ProductsContextType | null>(null)
 
 function ProductsProvider({ children }: { children: ReactNode }) {
-  const [products, setProducts] = useState<ProductType[]>([])
-  const [categoryList, setCategoryList] = useState<string[]>([])
+  const [products] = useState<ProductType[]>(data.products)
+  const [categoryList] = useState<string[]>([])
   const [cartIsOpen, setCartIsOpen] = useState(false)
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
 
@@ -26,7 +28,7 @@ function ProductsProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("inCart", JSON.stringify(inCartProducts))
   }, [inCartProducts])
 
-  useEffect(() => {
+  /*   useEffect(() => {
     async function getProducts() {
       try {
         const res = await fetch("http://localhost:8000/products")
@@ -44,7 +46,7 @@ function ProductsProvider({ children }: { children: ReactNode }) {
     }
 
     getProducts()
-  }, [])
+  }, []) */
 
   function storageGetProducts(): inCartType[] {
     const items = JSON.parse(localStorage.getItem("inCart") || "[]")
