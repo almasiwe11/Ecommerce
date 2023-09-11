@@ -1,7 +1,7 @@
 import { useProducts } from "../../Context/ProductsContext"
 type PropTypes = {
   style: string
-  iconRef: any
+  iconRef: React.LegacyRef<SVGSVGElement> | undefined
 }
 
 function CartIcon({ style, iconRef }: PropTypes) {
