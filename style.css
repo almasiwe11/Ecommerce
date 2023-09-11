@@ -24,6 +24,11 @@
   }
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .hamburger {
   cursor: pointer;
   width: 24px;

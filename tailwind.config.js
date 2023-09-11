@@ -17,9 +17,9 @@ export default {
         manrope: ["Manrope", "sans-serif"],
       },
       backgroundImage: {
-        "hero-desktop": "url('assets/home/desktop/image-hero.jpg')",
-        "hero-tablet": "url('assets/home/tablet/image-header.jpg')",
-        "hero-mobile": "url('assets/home/mobile/image-header.jpg')",
+        "hero-desktop": "url('/assets/home/desktop/image-hero.jpg')",
+        "hero-tablet": "url('/assets/home/tablet/image-header.jpg')",
+        "hero-mobile": "url('/assets/home/mobile/image-header.jpg')",
         "speaker-desktop": "url('/assets/home/desktop/image-speaker-zx7.jpg')",
         "speaker-tablet": "url('/assets/home/tablet/image-speaker-zx7.jpg')",
         "speaker-mobile": "url('/assets/home/mobile/image-speaker-zx7.jpg')",
