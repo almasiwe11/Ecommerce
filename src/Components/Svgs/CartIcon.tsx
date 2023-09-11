@@ -6,6 +6,7 @@ type PropTypes = {
 
 function CartIcon({ style, iconRef }: PropTypes) {
   const { setCartIsOpen } = useProducts()
+  console.log("1")
   return (
     <svg
       width="23"

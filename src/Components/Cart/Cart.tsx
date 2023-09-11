@@ -11,7 +11,7 @@ type PropTypes = {
 function Cart({ checkout = false, iconRef }: PropTypes) {
   const cartRef = useRef<HTMLElement | null>(null)
 
-  const { setCartIsOpen } = useProducts()
+  const { setCartIsOpen, cartIsOpen } = useProducts()
 
   useEffect(() => {
     function handler(e: MouseEvent) {
@@ -28,7 +28,7 @@ function Cart({ checkout = false, iconRef }: PropTypes) {
     return () => {
       document.removeEventListener("mousedown", handler)
     }
-  })
+  }, [cartIsOpen, setCartIsOpen, iconRef])
 
   const { inCartProducts, setInCartProducts } = useProducts()
 

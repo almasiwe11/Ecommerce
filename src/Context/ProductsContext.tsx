@@ -17,6 +17,8 @@ function ProductsProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<ProductType[]>([])
   const [categoryList, setCategoryList] = useState<string[]>([])
   const [cartIsOpen, setCartIsOpen] = useState(false)
+  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
+
   const [inCartProducts, setInCartProducts] =
     useState<inCartType[]>(storageGetProducts)
 
@@ -58,6 +60,8 @@ function ProductsProvider({ children }: { children: ReactNode }) {
         cartIsOpen,
         setCartIsOpen,
         setInCartProducts,
+        mobileMenuIsOpen,
+        setMobileMenuIsOpen,
       }}
     >
       {children}

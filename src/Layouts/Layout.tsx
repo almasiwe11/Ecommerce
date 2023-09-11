@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import Header from "../Components/Hero/Header"
 import ByOne from "../Components/ByOne/ByOne"
 import AllProducts from "../Components/AllProducts/AllProducts"

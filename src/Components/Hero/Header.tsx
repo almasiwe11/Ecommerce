@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useRef } from "react"
 import Hamburger from "./Hamburger"
 import Logo from "../Svgs/Logo"
 import NavMenu from "../NavMenu"
@@ -7,18 +7,18 @@ import { useLocation } from "react-router"
 import { useParams } from "react-router"
 import Cart from "../Cart/Cart"
 import { useProducts } from "../../Context/ProductsContext"
+import AllProducts from "../AllProducts/AllProducts"
 
-function Header({}): JSX.Element {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+function Header(): JSX.Element {
   const pages: string[] = ["home", "headphones", "speakers", "earphones"]
   const location = useLocation()
   const isHomePage = location.pathname === "/"
   const { product } = useParams()
-  const { cartIsOpen } = useProducts()
+  const { cartIsOpen, setMobileMenuIsOpen, mobileMenuIsOpen } = useProducts()
   const iconRef = useRef<SVGSVGElement | null>(null)
   return (
     <div
-      className={` lg:border-0 z-50  ${!isHomePage && "bg-black "} ${
+      className={`relative lg:border-0 z-50  ${!isHomePage && "bg-black "} ${
         !product && "border-b z-50 border-grayish "
       }`}
     >
@@ -26,8 +26,8 @@ function Header({}): JSX.Element {
         <div className="flex items-center z-50  py-8 md:py-10">
           <div className="flex z-50 w-full justify-between md:justify-normal">
             <Hamburger
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
+              isOpen={mobileMenuIsOpen}
+              setIsOpen={setMobileMenuIsOpen}
               style={"group-hover:bg-orange bg-white"}
             />
             <div className="md:ml-16 md:mr-auto lg:ml-0 lg:mr-0 ">
@@ -51,6 +51,12 @@ function Header({}): JSX.Element {
         ></div>
         {cartIsOpen && <Cart iconRef={iconRef} />}
       </section>
+
+      {mobileMenuIsOpen && (
+        <div className="absolute top-[100%]  w-full bg-white">
+          <AllProducts />
+        </div>
+      )}
     </div>
   )
 }

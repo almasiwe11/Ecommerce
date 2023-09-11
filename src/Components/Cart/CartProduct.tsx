@@ -23,7 +23,7 @@ function CartProduct({ product, checkout = false, thanks = false }: PropTypes) {
         }
       })
     })
-  }, [amount, product, setInCartProducts])
+  }, [amount, setInCartProducts])
 
   return (
     <div className="flex justify-between items-center">

@@ -11,7 +11,6 @@ type Proptypes = {
 
 function ButtonLink({ children, orange = false, style, product }: Proptypes) {
   const { category, slug } = product || {}
-  console.log(category, slug)
   return (
     <>
       <Link to={`/${category}/${slug}`}>

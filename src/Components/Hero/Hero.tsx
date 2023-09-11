@@ -1,5 +1,4 @@
 import { useProducts } from "../../Context/ProductsContext"
-import { Link } from "react-router-dom"
 import ButtonLink from "../ButtonLink"
 
 /* import Button from "../Button" */
