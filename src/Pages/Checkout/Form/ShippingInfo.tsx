@@ -19,7 +19,7 @@ function ShippingInfo({ formik }: PropTypes) {
         placeholder="1137 Williams Avenue"
       />
 
-      <div className="flex flex-col md:grid md:grid-cols-2 items-end  gap-4">
+      <div className="flex flex-col md:grid md:grid-cols-2 md:items-end  gap-4">
         <Input
           formik={formik}
           label="ZIP Code"

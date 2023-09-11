@@ -21,7 +21,7 @@ function Checkout() {
         onSubmit={onSubmit}
       >
         {(formik) => (
-          <Form className="md:wrapper flex flex-gap-6 md:justify-between">
+          <Form className="flex md:wrapper flex-col lg:flex-row gap-6 md:justify-between">
             <Formm formik={formik} />
             <Cart checkout={true} />
           </Form>

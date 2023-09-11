@@ -41,7 +41,7 @@ function PaymentDetails({ formik }: PropTypes) {
       </div>
 
       {formik.values.paymentMethod === "e-Money" && (
-        <div className="flex mt-4 flex-col md:grid md:grid-cols-2 items-end  gap-4">
+        <div className="flex mt-4 flex-col md:grid md:grid-cols-2 md:items-end    gap-4">
           <Input
             name="e-money number"
             formik={formik}

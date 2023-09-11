@@ -24,7 +24,7 @@ function Header(): JSX.Element {
     >
       <section className={`wrapper z-50  `}>
         <div className="flex items-center z-50  py-8 md:py-10">
-          <div className="flex z-50 w-full justify-between md:justify-normal">
+          <div className="flex items-center z-50 w-full justify-between md:justify-normal">
             <Hamburger
               isOpen={mobileMenuIsOpen}
               setIsOpen={setMobileMenuIsOpen}

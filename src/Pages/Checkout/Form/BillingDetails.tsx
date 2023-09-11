@@ -12,7 +12,7 @@ function BillingDetails({ formik }: PropTypes) {
         Billing details
       </div>
 
-      <div className="flex flex-col md:grid md:grid-cols-2 items-end gap-4 ">
+      <div className="flex flex-col md:grid md:grid-cols-2 md:items-end   gap-4 ">
         <Input
           formik={formik}
           label="Name"
