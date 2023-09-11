@@ -1,3 +1,4 @@
+import { useProducts } from "../../Context/ProductsContext"
 import ArrowRight from "../Svgs/ArrowRight"
 import { Link } from "react-router-dom"
 function CategoryProduct({
@@ -9,8 +10,10 @@ function CategoryProduct({
   alt: string
   product: string
 }): JSX.Element {
+  const { setMobileMenuIsOpen } = useProducts()
   return (
     <Link
+      onClick={() => setMobileMenuIsOpen(false)}
       to={`/${product}`}
       className=" bg-white-gray  flex flex-col items-center rounded-lg  relative  w-full shadow-sm cursor-pointer "
     >

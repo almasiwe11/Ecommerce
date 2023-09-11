@@ -9,10 +9,12 @@ import { useProducts } from "../Context/ProductsContext"
 function Layout() {
   const location = useLocation()
   const isHomePage = location.pathname === "/"
-  const { cartIsOpen } = useProducts()
+  const { cartIsOpen, mobileMenuIsOpen } = useProducts()
+
+  console.log(!(mobileMenuIsOpen || cartIsOpen))
 
   useEffect(() => {
-    if (cartIsOpen) {
+    if (cartIsOpen || mobileMenuIsOpen) {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = "auto"
@@ -21,7 +23,7 @@ function Layout() {
     return () => {
       document.body.style.overflow = "auto"
     }
-  }, [cartIsOpen])
+  }, [cartIsOpen, mobileMenuIsOpen])
 
   return (
     <>
@@ -33,7 +35,7 @@ function Layout() {
 
       <div
         className={`absolute ${
-          !cartIsOpen && "hidden"
+          !(mobileMenuIsOpen || cartIsOpen) && "hidden"
         } fixed inset-0 h-[90vhs] bottom-0 top-24 w-full bg-black/30  cursor-pointer`}
       ></div>
 

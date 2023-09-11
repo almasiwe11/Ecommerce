@@ -2,6 +2,7 @@ import RespImage from "../../Components/RespImage"
 import AmountInput from "./AmountInput"
 import { ProductType } from "../../Modules/TypesContext"
 import ButtonAddCart from "../../Components/ButtonAddCart"
+import { useProducts } from "../../Context/ProductsContext"
 
 type PropTypes = {
   amount: number
@@ -10,6 +11,10 @@ type PropTypes = {
 }
 
 function Product({ thisProduct, amount, setAmount }: PropTypes) {
+  const { inCartProducts } = useProducts()
+  const inCart = inCartProducts.find(
+    (product) => product.name === thisProduct.name
+  )
   return (
     <div className="flex flex-col gap-10 md:gap-0 md:grid md:grid-cols-2 mt-10 ">
       <RespImage
@@ -27,10 +32,12 @@ function Product({ thisProduct, amount, setAmount }: PropTypes) {
         <h1 className="font-big font-bold">{thisProduct.name}</h1>
         <p className="text-grayish">{thisProduct.description}</p>
         <h2 className="font-bold text-xl">$ {thisProduct.price}</h2>
-
         <div className="flex  items-center gap-5">
           <AmountInput amount={amount} setAmount={setAmount} />
           <ButtonAddCart amount={amount} thisProduct={thisProduct} />
+        </div>
+        <div className={`${inCart ? "visible" : "invisible"} text-orange `}>
+          {inCart?.amount} item(s) in cart
         </div>
       </div>
     </div>

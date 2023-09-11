@@ -53,8 +53,10 @@ function Header(): JSX.Element {
       </section>
 
       {mobileMenuIsOpen && (
-        <div className="absolute top-[100%]  w-full bg-white">
-          <AllProducts />
+        <div className="fixed mt-20 bottom-0 md:bottom-48 rounded-b-lg  md:mt-24  top-0 w-full bg-white overflow-auto">
+          <div className=" overflow-auto ">
+            <AllProducts />
+          </div>
         </div>
       )}
     </div>
