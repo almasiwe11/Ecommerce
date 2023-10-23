@@ -34,7 +34,7 @@ function Layout() {
       <Bring />
 
       <div
-        className={` ${
+        className={`z-30 ${
           !(mobileMenuIsOpen || cartIsOpen) && "hidden"
         } fixed inset-0  w-full bg-black/30  cursor-pointer`}
       ></div>
