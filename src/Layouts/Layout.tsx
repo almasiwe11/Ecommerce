@@ -34,9 +34,9 @@ function Layout() {
       <Bring />
 
       <div
-        className={`absolute ${
+        className={` ${
           !(mobileMenuIsOpen || cartIsOpen) && "hidden"
-        } fixed inset-0 h-[90vhs] bottom-0 top-24 w-full bg-black/30  cursor-pointer`}
+        } fixed inset-0  w-full bg-black/30  cursor-pointer`}
       ></div>
 
       <Footer />
